@@ -10,7 +10,8 @@ namespace genturfahi
     class LojibangParser : INotifyPropertyChanged
     {
         string lojibanContent = "";
-        string parseResult = "";
+        public string parseResult;
+        public string message;
 
         public event PropertyChangedEventHandler PropertyChanged;
         // Create the OnPropertyChanged method to raise the event
@@ -32,6 +33,15 @@ namespace genturfahi
             }
         }
 
+        public bool isParseError(string error)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(error, @"Unknown cmavo zee at line \d+, column \d+; selma'o UI assumed"))
+            {
+                return false;
+            }
+            return true;
+        }
+
         public string ParseResult
         {
             get { return parseResult; }
@@ -41,9 +51,6 @@ namespace genturfahi
 
                 OnPropertyChanged("parseResult");
             }
-        }
-
-        public void parse() { 
         }
     }
 }
