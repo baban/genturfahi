@@ -36,6 +36,7 @@ namespace genturfahi
         //  coi .i (%) ke7e
 
         LojibangParser lojibanParser = null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -49,21 +50,29 @@ namespace genturfahi
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine(lojibanText.Text);
-            ParseResult ret = ExecParser(lojibanText.Text.Replace(Environment.NewLine, ""));
-            lojibanParser.parseResult = ret.message;
-            this.DataContext = lojibanParser;
-            parseResultField.Text = ret.message;
+            setParseResult();
         }
 
         private void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
+                setParseResult();
                 Console.WriteLine(lojibanText.Text);
-                ParseResult ret = ExecParser(lojibanText.Text.Replace(Environment.NewLine, ""));
-                lojibanParser.parseResult = ret.message;
-                this.DataContext = lojibanParser;
-                parseResultField.Text = ret.message;
+            }
+        }
+
+        private void setParseResult() {
+            ParseResult ret = ExecParser(lojibanText.Text.Replace(Environment.NewLine, ""));
+            lojibanParser.parseResult = ret.message;
+            this.DataContext = lojibanParser;
+            parseResultField.Text = ret.message;
+            if (ret.status == ParseResult.Status.OK) {
+                parseResultField.Foreground = new SolidColorBrush(Colors.Black);
+            }
+            else if (ret.status == ParseResult.Status.ERROR)
+            {
+                parseResultField.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
 
@@ -78,7 +87,11 @@ namespace genturfahi
 
         private ParseResult ExecParser(string str)
         {
-            string commandPath = "/c echo \"" + str + "\" | \"" + dirPath() + "\\parser.exe";
+            if( str=="" ){
+                return BlankError();
+            }
+
+            string commandPath = "/c echo \"" + str + "\" | \"" + dirPath() + "\\bin\\parser.exe";
             
             //Processオブジェクトを作成
             System.Diagnostics.Process p = new System.Diagnostics.Process();
@@ -120,26 +133,33 @@ namespace genturfahi
             return ret;
         }
 
+        private ParseResult BlankError()
+        {
+            ParseResult ret = new ParseResult();
+            ret.status = ParseResult.Status.ERROR;
+            ret.message = "text is blank";
+            return ret;
+        }
+
         private ParseResult setResult(string results, string error)
         {
             ParseResult ret = new ParseResult();
             if (isParseError(error))
             {
-                ret.status = ParseResult.Status.OK;
+                ret.status = ParseResult.Status.ERROR;
                 ret.message = extractErrorMessage(error);
-                parseResultField.Foreground = new SolidColorBrush(Colors.Red);
+                return ret;
             }
             else
             {
-                ret.status = ParseResult.Status.ERROR;
+                ret.status = ParseResult.Status.OK;
                 ret.message = results;
-                parseResultField.Foreground = new SolidColorBrush(Colors.Black);
+                return ret;
             }
-            return ret;
         }
 
         public bool isParseError( string error ) {
-            if (System.Text.RegularExpressions.Regex.IsMatch(error, @"Unknown cmavo zee at line \d+, column \d+; selma'o UI assumed"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(error, @"line"))
             {
                 return true;
             }
