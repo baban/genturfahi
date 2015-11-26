@@ -118,12 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ContentLabel" xml:space="preserve">
-    <value>lojiban script:</value>
-  </data>
-  <data name="HelloWorld" xml:space="preserve">
-    <value>HelloWorld!</value>
+    <value>文章:</value>
   </data>
   <data name="ParseResultLabel" xml:space="preserve">
-    <value>parse result:</value>
+    <value>解析結果:</value>
   </data>
 </root>

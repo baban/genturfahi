@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Shapes;
 
 namespace genturfahi
 {
@@ -39,7 +38,11 @@ namespace genturfahi
 
         public MainWindow()
         {
+            Console.WriteLine("Properties.Resources.HelloWorld1");
+            Console.WriteLine(Properties.Resources.HelloWorld);
             InitializeComponent();
+            Console.WriteLine("Properties.Resources.HelloWorld2");
+            Console.WriteLine(Properties.Resources.HelloWorld);
             lojibanParser = new LojibangParser
             {
                 LojibanContent = "coi"
@@ -159,7 +162,7 @@ namespace genturfahi
         }
 
         public bool isParseError( string error ) {
-            if (System.Text.RegularExpressions.Regex.IsMatch(error, @"line"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(error, "line"))
             {
                 return true;
             }
