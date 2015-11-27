@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.IO;
 
 namespace genturfahi
 {
@@ -177,6 +179,79 @@ namespace genturfahi
             }
             Console.WriteLine("extractErrorMessage:"+s);
             return s;
+        }
+
+        public void OnSelect_Open(object sender, RoutedEventArgs e)
+        {
+            loadNewFile();
+        }
+
+        public void OnSelect_Save(object sender, RoutedEventArgs e)
+        {
+            if (lojibanParser.fileName == null)
+            {
+                saveNewFile();
+            }
+            else
+            {
+                saveFile(lojibanParser.fileName);
+            }
+        }
+
+        public void OnSelect_SaveAs(object sender, RoutedEventArgs e)
+        {
+            saveNewFile();
+        }
+
+        private void saveFile( string fileName ){
+            using (StreamWriter sr = new StreamWriter(fileName, false))
+            {
+                string txt = lojibanText.Text;
+                sr.Write(txt);
+            }
+        }
+
+        private void loadNewFile()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.FileName = "";
+            ofd.DefaultExt = "*.*";
+            ofd.FilterIndex = 1;
+            ofd.Filter = "テキスト ファイル(.txt)|*.txt|All Files (*.*)|*.*";
+            if (ofd.ShowDialog() == true)
+            {
+                string filemane = ofd.FileName;
+                
+                using (Stream fileStream = ofd.OpenFile())
+                {
+                    StreamReader sr = new StreamReader(fileStream, true);
+                    string txt = sr.ReadToEnd();
+                    lojibanText.Text = txt;
+                    lojibanParser.fileName = filemane;
+                }
+            }
+        }
+
+        private void saveNewFile()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.Filter = "テキスト ファイル(.txt)|*.txt|HTML File(*.html, *.htm)|*.html;*.htm|All Files (*.*)|*.*";
+            bool? result = saveFileDialog.ShowDialog();
+            if (result == true)
+            {
+                string txt = lojibanText.Text;
+                string filename = saveFileDialog.FileName;
+                
+                using (Stream fileStream = saveFileDialog.OpenFile()) {
+                    
+                    using (StreamWriter sr = new StreamWriter(fileStream))
+                    {
+                        sr.Write(txt);
+                    }
+                }
+                lojibanParser.fileName = filename;
+            }
         }
 
         //ErrorDataReceivedイベントハンドラ

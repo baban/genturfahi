@@ -4,11 +4,28 @@
         xmlns:local="clr-namespace:genturfahi"
         xmlns:properties="clr-namespace:genturfahi.Properties"
         Title="genturfa'i" Height="350" Width="525" MinHeight="350" MinWidth="350">
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="OnSelect_Open" />
+        <CommandBinding Command="Save" Executed="OnSelect_Save" />
+        <CommandBinding Command="SaveAs" Executed="OnSelect_SaveAs" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+O" Command="Open" />
+        <KeyBinding Gesture="Ctrl+S" Command="Save" />
+        <KeyBinding Gesture="Ctrl+Shift+S" Command="SaveAs" />
+    </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Content="パース" Margin="10,5,8,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Menu Height="20" VerticalAlignment="Top">
+            <MenuItem Header="ファイル(_F)">
+                <MenuItem Header="開く(_O)" Click="OnSelect_Open" InputGestureText="Ctrl+O" />
+                <MenuItem Header="保存(_S)" Click="OnSelect_Save" InputGestureText="Ctrl+S" />
+                <MenuItem Header="別名で保存(_A)" Click="OnSelect_SaveAs" InputGestureText="Ctrl+Shift+S" />
+            </MenuItem>
+        </Menu>
+        <Button Content="{x:Static properties:Resources.ParseButtonLabel}" Margin="8,25,10,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Grid Margin="0,25,0,0"  PreviewKeyDown="OnKeyDownHandler">
             <Grid.RowDefinitions>
                 <RowDefinition Height="144"  MinHeight="144" />
@@ -16,9 +33,9 @@
                 <RowDefinition MinHeight="10" />
             </Grid.RowDefinitions>
             <TextBlock  HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{x:Static properties:Resources.ParseResultLabel}" VerticalAlignment="Top"/>
-            <TextBox Name="lojibanText" Grid.Row="0" Margin="10,29,10,10" TextWrapping="Wrap" Text="{Binding LojibanContent}" Grid.ColumnSpan="2" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Visible" IsManipulationEnabled="True" ></TextBox>
+            <TextBox Name="lojibanText" Grid.Row="0" Margin="10,44,10,10" TextWrapping="Wrap" Text="{Binding LojibanContent}" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Visible" IsManipulationEnabled="True" />
             <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" />
-            <TextBlock Grid.Row="0"  HorizontalAlignment="Left" Margin="10,8,0,120" TextWrapping="Wrap" Text="{x:Static properties:Resources.ContentLabel}"  />
+            <TextBlock Grid.Row="0"  HorizontalAlignment="Left" Margin="10,23,0,105" TextWrapping="Wrap" Text="{x:Static properties:Resources.ContentLabel}"  />
             <TextBox Name="parseResultField" Grid.Row="2" Margin="10,31,10,10" TextWrapping="Wrap" Grid.ColumnSpan="2" Text="{Binding ParseResult}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" />
         </Grid>
     </Grid>

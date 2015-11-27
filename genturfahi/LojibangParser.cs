@@ -13,6 +13,8 @@ namespace genturfahi
         public string parseResult;
         public string message;
 
+        public string fileName = null;
+
         public event PropertyChangedEventHandler PropertyChanged;
         // Create the OnPropertyChanged method to raise the event
         protected void OnPropertyChanged(string name)

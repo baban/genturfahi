@@ -123,6 +123,9 @@
   <data name="HelloWorld" xml:space="preserve">
     <value>HelloWorld!</value>
   </data>
+  <data name="ParseButtonLabel" xml:space="preserve">
+    <value>Parse</value>
+  </data>
   <data name="ParseResultLabel" xml:space="preserve">
     <value>parse result:</value>
   </data>

@@ -79,6 +79,15 @@ namespace genturfahi.Properties {
         }
         
         /// <summary>
+        ///   Parse に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ParseButtonLabel {
+            get {
+                return ResourceManager.GetString("ParseButtonLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   parse result: に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ParseResultLabel {

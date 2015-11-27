@@ -120,6 +120,9 @@
   <data name="ContentLabel" xml:space="preserve">
     <value>文章:</value>
   </data>
+  <data name="ParseButtonLabel" xml:space="preserve">
+    <value>パース</value>
+  </data>
   <data name="ParseResultLabel" xml:space="preserve">
     <value>解析結果:</value>
   </data>
