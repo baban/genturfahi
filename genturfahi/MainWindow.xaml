@@ -24,6 +24,9 @@
                 <MenuItem Header="保存(_S)" Click="OnSelect_Save" InputGestureText="Ctrl+S" />
                 <MenuItem Header="別名で保存(_A)" Click="OnSelect_SaveAs" InputGestureText="Ctrl+Shift+S" />
             </MenuItem>
+            <MenuItem Header="ヘルプ(_H)">
+                <MenuItem Header="genturfa'iについて(_A)" Click="OnSelect_Open" />
+            </MenuItem>
         </Menu>
         <Button Content="{x:Static properties:Resources.ParseButtonLabel}" Margin="8,25,10,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Grid Margin="0,25,0,0"  PreviewKeyDown="OnKeyDownHandler">
