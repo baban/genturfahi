@@ -203,6 +203,13 @@ namespace genturfahi
             saveNewFile();
         }
 
+        public void OnSelect_Copyright(object sender, RoutedEventArgs e)
+        {
+            CopyrightWindow dialog = new CopyrightWindow();
+	         dialog.Owner = this;
+	         dialog.Show();
+        }
+
         private void saveFile( string fileName ){
             using (StreamWriter sr = new StreamWriter(fileName, false))
             {
