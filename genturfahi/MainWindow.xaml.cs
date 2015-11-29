@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Win32;
-using System.IO;
 
 namespace genturfahi
 {
@@ -24,7 +24,7 @@ namespace genturfahi
     {
         public struct ParseResult
         {
-            public enum Status { OK, ERROR };
+            public enum Status { INIT, OK, ERROR };
             public Status status;
             public string message;
         }
@@ -40,14 +40,11 @@ namespace genturfahi
 
         public MainWindow()
         {
-            Console.WriteLine("Properties.Resources.HelloWorld1");
-            Console.WriteLine(Properties.Resources.HelloWorld);
             InitializeComponent();
-            Console.WriteLine("Properties.Resources.HelloWorld2");
-            Console.WriteLine(Properties.Resources.HelloWorld);
             lojibanParser = new LojibangParser
             {
-                LojibanContent = "coi"
+                LojibanContent = "coi",
+                parseResult = "ここに構文解析結果が表示されます"
             };
             this.DataContext = lojibanParser;
         }
@@ -177,7 +174,7 @@ namespace genturfahi
             foreach(System.Text.RegularExpressions.Match match in matches){
                 s += match.Value;
             }
-            Console.WriteLine("extractErrorMessage:"+s);
+            //Console.WriteLine("extractErrorMessage:"+s);
             return s;
         }
 
@@ -205,9 +202,15 @@ namespace genturfahi
 
         public void OnSelect_Copyright(object sender, RoutedEventArgs e)
         {
-            CopyrightWindow dialog = new CopyrightWindow();
-	         dialog.Owner = this;
-	         dialog.Show();
+            System.Diagnostics.FileVersionInfo app =
+    System.Diagnostics.FileVersionInfo.GetVersionInfo(
+    System.Reflection.Assembly.GetExecutingAssembly().Location);
+            Console.WriteLine(app);
+            string messageBoxText = String.Format("{0}\n Version: {1} ", app.ProductName, app.ProductVersion);
+            string caption = app.ProductName;
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.None;
+            MessageBox.Show(messageBoxText, caption, button, icon);
         }
 
         private void saveFile( string fileName ){
