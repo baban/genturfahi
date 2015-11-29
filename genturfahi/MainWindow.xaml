@@ -3,7 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:genturfahi"
         xmlns:properties="clr-namespace:genturfahi.Properties"
-        Title="genturfa'i" Height="350" Width="525" MinHeight="350" MinWidth="350" Icon="icon.ico">
+        Title="genturfa'i"
+        Height="350"
+        Width="525"
+        MinHeight="350"
+        MinWidth="350"
+        Icon="icon.ico">
     <Window.CommandBindings>
         <CommandBinding Command="Open" Executed="OnSelect_Open" />
         <CommandBinding Command="Save" Executed="OnSelect_Save" />
@@ -19,13 +24,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Menu Height="20" VerticalAlignment="Top">
-            <MenuItem Header="ファイル(_F)">
-                <MenuItem Header="開く(_O)" Click="OnSelect_Open" InputGestureText="Ctrl+O" />
-                <MenuItem Header="保存(_S)" Click="OnSelect_Save" InputGestureText="Ctrl+S" />
-                <MenuItem Header="別名で保存(_A)" Click="OnSelect_SaveAs" InputGestureText="Ctrl+Shift+S" />
+            <MenuItem Header="{x:Static properties:Resources.FileItem}">
+                <MenuItem Header="{x:Static properties:Resources.OpenItem}" Click="OnSelect_Open" InputGestureText="Ctrl+O" />
+                <MenuItem Header="{x:Static properties:Resources.SaveItem}" Click="OnSelect_Save" InputGestureText="Ctrl+S" />
+                <MenuItem Header="{x:Static properties:Resources.SaveAsItem}" Click="OnSelect_SaveAs" InputGestureText="Ctrl+Shift+S" />
             </MenuItem>
-            <MenuItem Header="ヘルプ(_H)">
-                <MenuItem Header="genturfa'iについて(_A)" Click="OnSelect_Copyright" />
+            <MenuItem Header="{x:Static properties:Resources.HelpItem}">
+                <MenuItem Header="{x:Static properties:Resources.CopyrightItem}" Click="OnSelect_Copyright" />
             </MenuItem>
         </Menu>
         <Button Content="{x:Static properties:Resources.ParseButtonLabel}" Margin="8,25,10,0" VerticalAlignment="Top" Click="Button_Click"/>

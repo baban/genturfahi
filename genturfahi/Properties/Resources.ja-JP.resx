@@ -120,10 +120,31 @@
   <data name="ContentLabel" xml:space="preserve">
     <value>文章:</value>
   </data>
+  <data name="CopyrightItem" xml:space="preserve">
+    <value>genturfa'iについて</value>
+  </data>
+  <data name="FileItem" xml:space="preserve">
+    <value>ファイル(_F)</value>
+  </data>
+  <data name="HelpItem" xml:space="preserve">
+    <value>ヘルプ(_H)</value>
+  </data>
+  <data name="OpenItem" xml:space="preserve">
+    <value>開く(_O)</value>
+  </data>
   <data name="ParseButtonLabel" xml:space="preserve">
     <value>パース</value>
   </data>
   <data name="ParseResultLabel" xml:space="preserve">
     <value>解析結果:</value>
+  </data>
+  <data name="ResultFieldDescription" xml:space="preserve">
+    <value>ここに構文解析結果が表示されます。</value>
+  </data>
+  <data name="SaveAsItem" xml:space="preserve">
+    <value>名前を付けて保存(_A)</value>
+  </data>
+  <data name="SaveItem" xml:space="preserve">
+    <value>保存(_S)</value>
   </data>
 </root>

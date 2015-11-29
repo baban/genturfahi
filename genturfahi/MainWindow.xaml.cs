@@ -44,7 +44,7 @@ namespace genturfahi
             lojibanParser = new LojibangParser
             {
                 LojibanContent = "coi",
-                parseResult = "ここに構文解析結果が表示されます"
+                parseResult = genturfahi.Properties.Resources.ResultFieldDescription
             };
             this.DataContext = lojibanParser;
         }
@@ -200,13 +200,16 @@ namespace genturfahi
             saveNewFile();
         }
 
+        public void OnDrop() {
+        }
+
         public void OnSelect_Copyright(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.FileVersionInfo app =
-    System.Diagnostics.FileVersionInfo.GetVersionInfo(
-    System.Reflection.Assembly.GetExecutingAssembly().Location);
+                System.Diagnostics.FileVersionInfo.GetVersionInfo(
+                System.Reflection.Assembly.GetExecutingAssembly().Location);
             Console.WriteLine(app);
-            string messageBoxText = String.Format("{0}\n Version: {1} ", app.ProductName, app.ProductVersion);
+            string messageBoxText = String.Format("{0} Version: {1} ", app.ProductName, app.ProductVersion);
             string caption = app.ProductName;
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBoxImage icon = MessageBoxImage.None;

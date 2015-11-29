@@ -70,11 +70,47 @@ namespace genturfahi.Properties {
         }
         
         /// <summary>
+        ///   About genturfa&apos;i に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string CopyrightItem {
+            get {
+                return ResourceManager.GetString("CopyrightItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   File(_F) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FileItem {
+            get {
+                return ResourceManager.GetString("FileItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   HelloWorld! に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string HelloWorld {
             get {
                 return ResourceManager.GetString("HelloWorld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Help(_H) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string HelpItem {
+            get {
+                return ResourceManager.GetString("HelpItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Open(_O) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string OpenItem {
+            get {
+                return ResourceManager.GetString("OpenItem", resourceCulture);
             }
         }
         
@@ -93,6 +129,33 @@ namespace genturfahi.Properties {
         public static string ParseResultLabel {
             get {
                 return ResourceManager.GetString("ParseResultLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   parse result に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ResultFieldDescription {
+            get {
+                return ResourceManager.GetString("ResultFieldDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Save As(_A) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SaveAsItem {
+            get {
+                return ResourceManager.GetString("SaveAsItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Save(_S) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SaveItem {
+            get {
+                return ResourceManager.GetString("SaveItem", resourceCulture);
             }
         }
     }
