@@ -36,15 +36,15 @@
         <Button Content="{x:Static properties:Resources.ParseButtonLabel}" Margin="8,25,10,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Grid Margin="0,25,0,0"  PreviewKeyDown="OnKeyDownHandler">
             <Grid.RowDefinitions>
-                <RowDefinition Height="144"  MinHeight="144" />
+                <RowDefinition MinHeight="144" />
                 <RowDefinition Height="Auto" MinHeight="5" />
-                <RowDefinition MinHeight="10" />
+                <RowDefinition Height="140"  MinHeight="10" />
             </Grid.RowDefinitions>
             <TextBlock  HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{x:Static properties:Resources.ParseResultLabel}" VerticalAlignment="Top"/>
             <TextBox Name="lojibanText" Grid.Row="0" Margin="10,44,10,10" TextWrapping="Wrap" Text="{Binding LojibanContent}" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Visible" IsManipulationEnabled="True" />
             <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" />
             <TextBlock Grid.Row="0"  HorizontalAlignment="Left" Margin="10,23,0,105" TextWrapping="Wrap" Text="{x:Static properties:Resources.ContentLabel}"  />
-            <TextBox Name="parseResultField" Grid.Row="2" Margin="10,31,10,10" TextWrapping="Wrap" Grid.ColumnSpan="2" Text="{Binding ParseResult}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Foreground="#FFAAAAAA"  />
+            <TextBox Name="parseResultField" Grid.Row="2" Margin="10,31,10,10" TextWrapping="Wrap" Text="{Binding ParseResult}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Foreground="#FFAAAAAA"  />
         </Grid>
     </Grid>
 </Window>
