@@ -13,5 +13,15 @@ namespace genturfahi
     /// </summary>
     public partial class App : Application
     {
+        public static string[] CommandLineArgs { get; private set; }
+
+        public void Startup_App(object sender, StartupEventArgs e)
+        {
+            if (e.Args.Length == 0)
+                return;
+            CommandLineArgs = e.Args;
+        }
+
+
     }
 }

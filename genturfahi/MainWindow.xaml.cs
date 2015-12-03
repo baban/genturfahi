@@ -41,12 +41,26 @@ namespace genturfahi
         public MainWindow()
         {
             InitializeComponent();
+
+            string initStr = "coi";
+
+            if (App.CommandLineArgs != null)
+            {
+                initStr = LoadInitFile();
+            }
+
             lojibanParser = new LojibangParser
             {
-                LojibanContent = "coi",
+                LojibanContent = initStr,
                 parseResult = genturfahi.Properties.Resources.ResultFieldDescription
             };
             this.DataContext = lojibanParser;
+        }
+
+        private string LoadInitFile()
+        {
+            string filename = App.CommandLineArgs.First();
+            return loadFile(filename);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -233,16 +247,29 @@ namespace genturfahi
             ofd.Filter = "テキスト ファイル(.txt)|*.txt|All Files (*.*)|*.*";
             if (ofd.ShowDialog() == true)
             {
-                string filemane = ofd.FileName;
+                string filename = ofd.FileName;
                 
                 using (Stream fileStream = ofd.OpenFile())
                 {
-                    StreamReader sr = new StreamReader(fileStream, true);
-                    string txt = sr.ReadToEnd();
-                    lojibanText.Text = txt;
-                    lojibanParser.fileName = filemane;
+                    lojibanText.Text = loadFile( filename );
+                    lojibanParser.fileName = filename;
                 }
             }
+        }
+
+        private string loadFile(string fileName) {
+            return loadFile(new FileStream(fileName, FileMode.Open));
+        }
+
+        private string loadFile(Stream fileStream)
+        {
+            string txt = "";
+            using (fileStream)
+            {
+                StreamReader sr = new StreamReader(fileStream, true);
+                txt = sr.ReadToEnd();
+            }
+            return txt;
         }
 
         private void saveNewFile()
