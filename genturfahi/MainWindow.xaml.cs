@@ -251,7 +251,7 @@ namespace genturfahi
                 
                 using (Stream fileStream = ofd.OpenFile())
                 {
-                    lojibanText.Text = loadFile( filename );
+                    lojibanText.Text = loadFile(fileStream);
                     lojibanParser.fileName = filename;
                 }
             }
