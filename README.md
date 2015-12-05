@@ -1,76 +1,84 @@
 # genturfa'i
 
-�\�t�g���O�F�ugenturfa'i�v
+ソフト名前：「genturfa'i」
 
-�o�[�W�����F�@�\�t�g�N����u�o�[�W�������v���Q�Ƃ��Ă�������
+バージョン：　ソフト起動後「バージョン情報」を参照してください
 
-��ʁ@�@�@�F�@�t���[�\�t�g
+種別　　　：　フリーソフト
 
-��Җ�    �F baban
+作者名    ： baban
+
+ファイルは下のURLで公開されています。
+
+[http://babanba-n.iobb.net/file/genturfahi.zip](http://babanba-n.iobb.net/file/genturfahi.zip)
+
+![alt screenshot](/image/screeenshot.png)
+
+ソースコードはgithub上で公開されています。
+
+[https://github.com/baban/genturfahi](https://github.com/baban/genturfahi)
 
 # INDEXES
 
- * ����͉��H
+ * これは何？
 
-## ����͉��H
+## これは何？
 
-�l�����ꃍ�W�o���̍\����͂��s���p�[�T�[�ł��B
+人口言語ロジバンの構文解析を行うパーサーです。
 
-�uOfficial LLG Parser�v��Windows�̃A�v���P�[�V��������ȒP�Ɏg����t�����g�G���h�Ƃ��Ď�������Ă��܂��B
+「Official LLG Parser」をWindowsのアプリケーションから簡単に使えるフロントエンドとして実装されています。
 https://mw.lojban.org/papri/Official_LLG_Parser
 
-## �����
+## 動作環境
 
- * .Net Framework4.0�ȏオ�C���X�g�[������Ă���Windows�}�V��
- * ����m�F��Windows10�ōs���Ă��܂����AWindowsVista�ȍ~�ł���Ζ��Ȃ������͂��ł��B
+ * .Net Framework4.0以上がインストールされているWindowsマシン
+ * 動作確認はWindows10で行っていますが、WindowsVista以降であれば問題なく動くはずです。
 
-## �Ɛ�
+## 免責
 
-����m�F�ɂ͍אS�̒��ӂ𕥂��Ă��܂����A���̃\�t�g���g�������Ƃɂ��
-�����Ȃ鑹�Q�ɑ΂��Ă��A��҂͐ӔC�𕉂����͏o���܂���
-���g�p�ɂ��Ă͎��ȐӔC�̉��ł��肢�������܂��B
+動作確認には細心の注意を払っていますが、このソフトを使ったことによる
+いかなる損害に対しても、作者は責任を負う事は出来ません
+ご使用については自己責任の下でお願いいたします。
 
-## �C���X�g�[���E�A���C���X�g�[��
+## インストール・アンインストール
 
-### �C���X�g�[��
+### インストール
 
-�C���X�g�[����Ƃ͕K�v����܂���B
-�茳�́ugenturfahi.exe�v�����̂܂܎��s����΃A�v���P�[�V�����������オ��܂��B
+インストール作業は必要ありません。
+手元の「genturfahi.exe」をそのまま実行すればアプリケーションが立ち上がります。
 
-### �A���C���X�g�[��
+### アンインストール
 
-����Ȃ��Ȃ�����A�𓀎��ɏo�����t�H���_�����̂܂܍폜���Ă���������Α��v�ł��B
+いらなくなったら、解凍時に出来たフォルダをそのまま削除していただければ大丈夫です。
 
-## �g����
+## 使い方
 
-�A�v���P�[�V�������N��������A��ʏ�̃e�L�X�g�{�b�N�X�Ƀ��W�o��������͂��Ă��������B
-��͌��ʂ��A���̃e�L�X�g�{�b�N�X�ɕ\������܂��B
+アプリケーションを起動したら、画面上のテキストボックスにロジバン文を入力してください。
+解析結果が、下のテキストボックスに表示されます。
 
-��͌��ʂ̌����ł���
+解析結果の見方ですが
 
-�f�t�H���g�̗ᕶ�́ucoi�v����͂���ƁA�u({coi DO'U} /FA'O/)�v�Ƃ��ċA���Ă��܂����A"DO'U"��"FA'O"��
-�\���Ƃ��ďȗ��\�ȕ�����ǉ������`�Ō��ʂ�Ԃ��܂��B
-�ł��̂Łucoi do'u�v���ȗ��ł�����̂������Ēǉ����Ă�
-�ucoi�v�̎��Ƃقړ�����͌��ʂ�Ԃ��܂��B
+デフォルトの例文の「coi」を解析すると、「({coi DO'U} /FA'O/)」として帰ってきますが、"DO'U"や"FA'O"は
+構文として省略可能な文字を追加した形で結果を返します。
+ですので「coi do'u」等省略できるものをあえて追加しても
+「coi」の時とほぼ同じ解析結果を返します。
 
-�p�[�X�Ɏ��s����ƁA�ԕ����ŃG���[���N�����s�ԍ���Ԃ��܂��B
+パースに失敗すると、赤文字でエラーが起きた行番号を返します。
 
-## ���W�o���ᕶ�W
+## ロジバン例文集
 
 coi
-��FHello          
+訳：Hello          
 
 ti penbi
-��F����̓y���ł�
+訳：これはペンです
 
 mi prami du
-��FI love you.
+訳：I love you.
 
 le ninmu cu melbi
-��F���̏����͔������B
+訳：その女性は美しい。
 
-## �J�����A�ӎ�
+## 開発環境、謝辞
 
-���̃\�t�g��Visual Studio 2013�ŊJ�������Ă��܂��B
-
-
+このソフトはVisual Studio 2013で開発をしています。
