@@ -78,7 +78,32 @@ namespace genturfahi
             }
         }
 
-        private void setParseResult() {
+        public void Window_Drop(object sender, System.Windows.DragEventArgs e) 
+        {
+            lojibanText.Text = "";
+            string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
+            if (files != null)
+            {
+                foreach (var s in files) {
+                    lojibanText.Text += loadFile(s);
+                }
+                    
+            }
+        }
+
+        public void TextBox_DropPreviewDragEnter(object sender, System.Windows.DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Move;
+        }
+
+        public void TextBox_DropPreviewDragOver(object sender, System.Windows.DragEventArgs e)
+        {
+            e.Handled = true;
+            e.Effects = DragDropEffects.Move;
+        }
+        
+        private void setParseResult()
+        {
             ParseResult ret = ExecParser(lojibanText.Text.Replace(Environment.NewLine, ""));
             lojibanParser.parseResult = ret.message;
             this.DataContext = lojibanParser;
