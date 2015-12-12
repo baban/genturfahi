@@ -91,9 +91,11 @@ char *p; char *bad;
 		pos++;
 		}
 	if (!pos) return;
-	if (pos == p || isV(pos[-1])) printf(
-"Illegal cmene %s at line %d, column %d: contains %s\n",
-		p, line, column, bad);
+	if (pos == p || isV(pos[-1])) {
+		fprintf( stderr,
+			"Illegal cmene %s at line %d, column %d: contains %s\n",
+			p, line, column, bad);
+	}
 	}
 
 int
