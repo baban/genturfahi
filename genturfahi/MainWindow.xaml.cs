@@ -37,11 +37,13 @@ namespace genturfahi
         //  coi .i (%) ke7e
 
         LojibangParser lojibanParser = null;
+        string tmpFilePath;
 
         public MainWindow()
         {
             InitializeComponent();
 
+            tmpFilePath = System.IO.Path.GetTempFileName();
             string initStr = "coi";
 
             if (App.CommandLineArgs != null)
@@ -132,8 +134,10 @@ namespace genturfahi
                 return BlankError();
             }
 
-            string commandPath = "/c echo \"" + str + "\" | \"" + dirPath() + "\\bin\\parser.exe";
-            
+            saveFile(tmpFilePath);
+
+            string commandPath = "/c type \"" + tmpFilePath + "\" | \"";
+            commandPath += dirPath() + "\\bin\\parser.exe";
             //Processオブジェクトを作成
             System.Diagnostics.Process p = new System.Diagnostics.Process();
 
@@ -154,20 +158,18 @@ namespace genturfahi
 
             //起動
             p.Start();
-            Console.WriteLine("end");
             //出力を読み取る
             //string results = p.StandardOutput.ReadToEnd();
             string results = p.StandardOutput.ReadToEnd();
             string error = p.StandardError.ReadToEnd();
-            Console.WriteLine("readed");
             //プロセス終了まで待機する
             //WaitForExitはReadToEndの後である必要がある
             //(親プロセス、子プロセスでブロック防止のため)
             p.WaitForExit();
             p.Close();
             //出力された結果を表示
-            Console.WriteLine("results:" + results);
-            Console.WriteLine("error:"+error);
+            //Console.WriteLine("results:" + results);
+            //Console.WriteLine("error:"+error);
 
             ParseResult ret = setResult( results, error );
 
