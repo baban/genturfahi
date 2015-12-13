@@ -129,6 +129,9 @@
   <data name="FileItem" xml:space="preserve">
     <value>File(_F)</value>
   </data>
+  <data name="FileSelectExtentions" xml:space="preserve">
+    <value>Text Files(.txt)|*.txt|All Files (*.*)|*.*</value>
+  </data>
   <data name="HelloWorld" xml:space="preserve">
     <value>HelloWorld!</value>
   </data>

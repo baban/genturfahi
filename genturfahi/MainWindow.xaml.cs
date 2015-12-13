@@ -47,6 +47,10 @@ namespace genturfahi
             tmpFilePath = System.IO.Path.GetTempFileName();
             string initStr = "coi";
 
+            string propLang = (string)Properties.Settings.Default["Language"];
+            propLang = (propLang == null || propLang == "") ? "en-US" : propLang;
+            ResourceService.Current.ChangeCulture(propLang);
+
             if (App.CommandLineArgs != null)
             {
                 initStr = LoadInitFile();
@@ -183,7 +187,6 @@ namespace genturfahi
             //起動
             p.Start();
             //出力を読み取る
-            //string results = p.StandardOutput.ReadToEnd();
             string results = p.StandardOutput.ReadToEnd();
             string error = p.StandardError.ReadToEnd();
             //プロセス終了まで待機する
@@ -268,12 +271,16 @@ namespace genturfahi
         {
             ResourceService.Current.ChangeCulture("en-US");
             parseResultField.Text = Properties.Resources.ResultFieldDescription;
+            Properties.Settings.Default["Language"] = "en-US";
+            Properties.Settings.Default.Save();
         }
 
         public void OnSelect_LanguageJa(object sender, RoutedEventArgs e)
         {
             ResourceService.Current.ChangeCulture("ja-JP");
             parseResultField.Text = Properties.Resources.ResultFieldDescription;
+            Properties.Settings.Default["Language"] = "ja-JP";
+            Properties.Settings.Default.Save();
         }
 
         public void OnSelect_Copyright(object sender, RoutedEventArgs e)
@@ -308,7 +315,7 @@ namespace genturfahi
             ofd.FileName = "";
             ofd.DefaultExt = "*.*";
             ofd.FilterIndex = 1;
-            ofd.Filter = "テキスト ファイル(.txt)|*.txt|All Files (*.*)|*.*";
+            ofd.Filter = Properties.Resources.FileSelectExtentions;
             if (ofd.ShowDialog() == true)
             {
                 string filename = ofd.FileName;
@@ -340,7 +347,7 @@ namespace genturfahi
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FilterIndex = 1;
-            saveFileDialog.Filter = "テキスト ファイル(.txt)|*.txt|HTML File(*.html, *.htm)|*.html;*.htm|All Files (*.*)|*.*";
+            saveFileDialog.Filter = Properties.Resources.FileSelectExtentions;
             bool? result = saveFileDialog.ShowDialog();
             if (result == true)
             {

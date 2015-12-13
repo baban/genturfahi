@@ -97,6 +97,15 @@ namespace genturfahi.Properties {
         }
         
         /// <summary>
+        ///   Text Files(.txt)|*.txt|All Files (*.*)|*.* に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FileSelectExtentions {
+            get {
+                return ResourceManager.GetString("FileSelectExtentions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   HelloWorld! に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string HelloWorld {

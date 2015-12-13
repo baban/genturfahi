@@ -85,6 +85,7 @@
       <DependentUpon>Resources.ja-JP.resx</DependentUpon>
     </Compile>
     <Compile Include="ResourceService.cs" />
+    <Compile Include="Settings.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
