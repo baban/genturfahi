@@ -36,6 +36,7 @@ namespace genturfahi
 
         //  coi .i (%) ke7e
 
+        ParseResult parseResult;
         LojibangParser lojibanParser = null;
         string tmpFilePath;
 
@@ -65,18 +66,40 @@ namespace genturfahi
             return loadFile(filename);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine(lojibanText.Text);
-            setParseResult();
+            string text = lojibanText.Text.Replace(Environment.NewLine, "");
+            await Task.Run(() =>
+            {
+                parseResult = ParseExec(text);
+            });
+            changeParsedUIComponent();
         }
 
-        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        private async void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                setParseResult();
-                Console.WriteLine(lojibanText.Text);
+                string text = lojibanText.Text.Replace(Environment.NewLine, "");
+                await Task.Run(() => {
+                    parseResult = ParseExec(text);
+                });
+                changeParsedUIComponent();
+            }
+        }
+
+        private void changeParsedUIComponent(){
+            ParseResult ret = parseResult;
+            lojibanParser.parseResult = ret.message;
+            this.DataContext = lojibanParser;
+            parseResultField.Text = ret.message;
+            if (ret.status == ParseResult.Status.OK)
+            {
+                parseResultField.Foreground = new SolidColorBrush(Colors.Black);
+            }
+            else if (ret.status == ParseResult.Status.ERROR)
+            {
+                parseResultField.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
 
@@ -103,10 +126,10 @@ namespace genturfahi
             e.Handled = true;
             e.Effects = DragDropEffects.Move;
         }
-        
+
         private void setParseResult()
         {
-            ParseResult ret = ExecParser(lojibanText.Text.Replace(Environment.NewLine, ""));
+            ParseResult ret = ParseExec(lojibanText.Text.Replace(Environment.NewLine, ""));
             lojibanParser.parseResult = ret.message;
             this.DataContext = lojibanParser;
             parseResultField.Text = ret.message;
@@ -128,13 +151,14 @@ namespace genturfahi
             return dirPath;
         }
 
-        private ParseResult ExecParser(string str)
+        private ParseResult ParseExec(string str)
         {
-            if( str=="" ){
+            if (str == "")
+            {
                 return BlankError();
             }
 
-            saveFile(tmpFilePath);
+            saveFile(tmpFilePath, str);
 
             string commandPath = "/c type \"" + tmpFilePath + "\" | \"";
             commandPath += dirPath() + "\\bin\\parser.exe";
@@ -257,12 +281,17 @@ namespace genturfahi
             MessageBox.Show(messageBoxText, caption, button, icon);
         }
 
-        private void saveFile( string fileName ){
+        private void saveFile(string fileName, string text)
+        {
             using (StreamWriter sr = new StreamWriter(fileName, false))
             {
-                string txt = lojibanText.Text;
-                sr.Write(txt);
+                sr.Write(text);
             }
+        }
+
+        private void saveFile(string fileName)
+        {
+            saveFile(fileName, lojibanText.Text);
         }
 
         private void loadNewFile()
