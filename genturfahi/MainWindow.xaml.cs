@@ -80,7 +80,7 @@ namespace genturfahi
         {
             if (e.Key == Key.Return)
             {
-                string text = lojibanText.Text.Replace(Environment.NewLine, "");
+                string text = lojibanText.Text;
                 await Task.Run(() => {
                     parseResult = ParseExec(text);
                 });
@@ -161,7 +161,7 @@ namespace genturfahi
             saveFile(tmpFilePath, str);
 
             string commandPath = "/c type \"" + tmpFilePath + "\" | \"";
-            commandPath += dirPath() + "\\bin\\parser.exe";
+            commandPath += dirPath() + @"\bin\parser.exe";
             //Processオブジェクトを作成
             System.Diagnostics.Process p = new System.Diagnostics.Process();
 
@@ -204,7 +204,7 @@ namespace genturfahi
         {
             ParseResult ret = new ParseResult();
             ret.status = ParseResult.Status.ERROR;
-            ret.message = "text is blank";
+            ret.message = "Text is blank";
             return ret;
         }
 
@@ -239,7 +239,6 @@ namespace genturfahi
             foreach(System.Text.RegularExpressions.Match match in matches){
                 s += match.Value;
             }
-            //Console.WriteLine("extractErrorMessage:"+s);
             return s;
         }
 
@@ -265,7 +264,16 @@ namespace genturfahi
             saveNewFile();
         }
 
-        public void OnDrop() {
+        public void OnSelect_LanguageEn(object sender, RoutedEventArgs e)
+        {
+            ResourceService.Current.ChangeCulture("en-US");
+            parseResultField.Text = Properties.Resources.ResultFieldDescription;
+        }
+
+        public void OnSelect_LanguageJa(object sender, RoutedEventArgs e)
+        {
+            ResourceService.Current.ChangeCulture("ja-JP");
+            parseResultField.Text = Properties.Resources.ResultFieldDescription;
         }
 
         public void OnSelect_Copyright(object sender, RoutedEventArgs e)

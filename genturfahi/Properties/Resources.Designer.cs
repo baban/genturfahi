@@ -79,6 +79,15 @@ namespace genturfahi.Properties {
         }
         
         /// <summary>
+        ///   English に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string EnglishItem {
+            get {
+                return ResourceManager.GetString("EnglishItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   File(_F) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string FileItem {
@@ -102,6 +111,24 @@ namespace genturfahi.Properties {
         public static string HelpItem {
             get {
                 return ResourceManager.GetString("HelpItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Japanese に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string JapaneseItem {
+            get {
+                return ResourceManager.GetString("JapaneseItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Language(_L) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LanguagesItem {
+            get {
+                return ResourceManager.GetString("LanguagesItem", resourceCulture);
             }
         }
         

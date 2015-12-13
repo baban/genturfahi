@@ -123,11 +123,20 @@
   <data name="CopyrightItem" xml:space="preserve">
     <value>genturfa'iについて</value>
   </data>
+  <data name="EnglishItem" xml:space="preserve">
+    <value>英語</value>
+  </data>
   <data name="FileItem" xml:space="preserve">
     <value>ファイル(_F)</value>
   </data>
   <data name="HelpItem" xml:space="preserve">
     <value>ヘルプ(_H)</value>
+  </data>
+  <data name="JapaneseItem" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="LanguagesItem" xml:space="preserve">
+    <value>言語(_L)</value>
   </data>
   <data name="OpenItem" xml:space="preserve">
     <value>開く(_O)</value>

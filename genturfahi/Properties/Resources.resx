@@ -123,6 +123,9 @@
   <data name="CopyrightItem" xml:space="preserve">
     <value>About genturfa'i</value>
   </data>
+  <data name="EnglishItem" xml:space="preserve">
+    <value>English</value>
+  </data>
   <data name="FileItem" xml:space="preserve">
     <value>File(_F)</value>
   </data>
@@ -131,6 +134,12 @@
   </data>
   <data name="HelpItem" xml:space="preserve">
     <value>Help(_H)</value>
+  </data>
+  <data name="JapaneseItem" xml:space="preserve">
+    <value>Japanese</value>
+  </data>
+  <data name="LanguagesItem" xml:space="preserve">
+    <value>Language(_L)</value>
   </data>
   <data name="OpenItem" xml:space="preserve">
     <value>Open(_O)</value>

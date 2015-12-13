@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:genturfahi"
         xmlns:properties="clr-namespace:genturfahi.Properties"
+        xmlns:app="clr-namespace:genturfahi"
         Title="genturfa'i"
         Height="350"
         Width="525"
@@ -26,27 +27,31 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Menu Height="20" VerticalAlignment="Top">
-            <MenuItem Header="{x:Static properties:Resources.FileItem}">
-                <MenuItem Header="{x:Static properties:Resources.OpenItem}" Click="OnSelect_Open" InputGestureText="Ctrl+O" />
-                <MenuItem Header="{x:Static properties:Resources.SaveItem}" Click="OnSelect_Save" InputGestureText="Ctrl+S" />
-                <MenuItem Header="{x:Static properties:Resources.SaveAsItem}" Click="OnSelect_SaveAs" InputGestureText="Ctrl+Shift+S" />
+            <MenuItem Header="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.FileItem}">
+                <MenuItem Header="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.OpenItem}" Click="OnSelect_Open" InputGestureText="Ctrl+O" />
+                <MenuItem Header="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.SaveItem}" Click="OnSelect_Save" InputGestureText="Ctrl+S" />
+                <MenuItem Header="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.SaveAsItem}" Click="OnSelect_SaveAs" InputGestureText="Ctrl+Shift+S" />
             </MenuItem>
-            <MenuItem Header="{x:Static properties:Resources.HelpItem}">
-                <MenuItem Header="{x:Static properties:Resources.CopyrightItem}" Click="OnSelect_Copyright" />
+            <MenuItem Header="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.LanguagesItem}">
+                <MenuItem Header="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.EnglishItem}" Click="OnSelect_LanguageEn" />
+                <MenuItem Header="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.JapaneseItem}" Click="OnSelect_LanguageJa" />
+            </MenuItem>
+            <MenuItem Header="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.HelpItem}">
+                <MenuItem Header="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.CopyrightItem}" Click="OnSelect_Copyright" />
             </MenuItem>
         </Menu>
-        <Button Content="{x:Static properties:Resources.ParseButtonLabel}" Margin="8,25,10,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.ParseButtonLabel}" Margin="8,25,10,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Grid Margin="0,25,0,0"  PreviewKeyDown="OnKeyDownHandler">
             <Grid.RowDefinitions>
                 <RowDefinition MinHeight="144" />
                 <RowDefinition Height="Auto" MinHeight="5" />
                 <RowDefinition Height="140"  MinHeight="10" />
             </Grid.RowDefinitions>
-            <TextBlock  HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{x:Static properties:Resources.ParseResultLabel}" VerticalAlignment="Top"/>
+            <TextBlock  HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.ParseButtonLabel.ParseResultLabel}" VerticalAlignment="Top"/>
             <TextBox Name="lojibanText" Grid.Row="0" Margin="10,44,10,10" TextWrapping="Wrap" Text="{Binding LojibanContent}" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Visible" IsManipulationEnabled="True"
                      PreviewDragEnter="TextBox_DropPreviewDragEnter" PreviewDragOver="TextBox_DropPreviewDragOver" AllowDrop="True" />
             <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" />
-            <TextBlock Grid.Row="0"  HorizontalAlignment="Left" Margin="10,23,0,105" TextWrapping="Wrap" Text="{x:Static properties:Resources.ContentLabel}"  />
+            <TextBlock Grid.Row="0"  HorizontalAlignment="Left" Margin="10,23,0,105" TextWrapping="Wrap" Text="{Binding Source={x:Static app:ResourceService.Current}, Path=Resources.ContentLabel}"  />
             <TextBox Name="parseResultField" Grid.Row="2" Margin="10,31,10,10" TextWrapping="Wrap" Text="{Binding ParseResult}" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Foreground="#FFAAAAAA"  />
         </Grid>
     </Grid>
