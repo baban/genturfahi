@@ -1,33 +1,45 @@
 # genturfa'i
 
-ソフト名前：「genturfa'i」
+* [[English Help(README.md)](README.md)
 
-バージョン：　ソフト起動後「バージョン情報」を参照してください
-
-種別　　　：　フリーソフト
-
-作者名    ： baban
+<table>
+  <tr>
+    <th>ソフト名前</td>
+    <td>「genturfa'i」</td>
+  </tr>
+  <tr>
+    <th>バージョン</td>
+    <td>ソフト起動後「バージョン情報」を参照してください</td>
+  </tr>
+  <tr>
+    <th>種別</td>
+    <td>フリーソフト</td>
+  </tr>
+  <tr>
+    <th>作者名</td>
+    <td>baban</td>
+  </tr>
+</table>
 
 ファイルは下のURLで公開されています。
 
-[http://babanba-n.iobb.net/file/genturfahi.zip](http://babanba-n.iobb.net/file/genturfahi.zip)
+ * http://babanba-n.iobb.net/file/genturfahi.html
 
-![alt screenshot](/image/screeenshot.png)
+![alt screenshot](/image/screeenshot.ja.png)
 
 ソースコードはgithub上で公開されています。
 
 [https://github.com/baban/genturfahi](https://github.com/baban/genturfahi)
-
-# INDEXES
-
- * これは何？
 
 ## これは何？
 
 人口言語ロジバンの構文解析を行うパーサーです。
 
 「Official LLG Parser」をWindowsのアプリケーションから簡単に使えるフロントエンドとして実装されています。
-https://mw.lojban.org/papri/Official_LLG_Parser
+
+ * [Official LLG Parser](https://mw.lojban.org/papri/Official_LLG_Parser)
+ * [Wikipedia ロジバン](https://ja.wikipedia.org/wiki/ロジバン)
+ * [はじめてのロジバン](http://seesaawiki.jp/hajiloji/)
 
 ## 動作環境
 
@@ -45,7 +57,7 @@ https://mw.lojban.org/papri/Official_LLG_Parser
 ### インストール
 
 インストール作業は必要ありません。
-手元の「genturfahi.exe」をそのまま実行すればアプリケーションが立ち上がります。
+解凍されたzipファイルの中、手元の「genturfahi.exe」をそのまま実行すればアプリケーションが立ち上がります。
 
 ### アンインストール
 
@@ -67,17 +79,16 @@ https://mw.lojban.org/papri/Official_LLG_Parser
 
 ## ロジバン例文集
 
-coi
-訳：Hello          
-
-ti penbi
-訳：これはペンです
-
-mi prami du
-訳：I love you.
-
-le ninmu cu melbi
-訳：その女性は美しい。
+<dl>
+  <dt>coi</dt>
+  <dd>訳：Hello</dd>
+  <dt>ti penbi</dt>
+  <dd>訳：これはペンです</dd>
+  <dt>mi prami du</dt>
+  <dd>訳：I love you.</dd>
+  <dt>le ninmu cu melbi</dt>
+  <dd>訳：その女性は美しい。</dd>
+</dl>
 
 ## 開発環境、謝辞
 
